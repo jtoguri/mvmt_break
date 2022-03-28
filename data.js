@@ -39,6 +39,9 @@ exercises.push(standCalfBent);
 const neckRotation = new Exercise('neck rotations', 'idk what type this is', null, 15, null);
 exercises.push(neckRotation);
 
+module.exports = {
+  exercises
+}
 
-console.log(exercises);
-console.log(exercises.length);
+// console.log(exercises);
+// console.log(exercises.length);
