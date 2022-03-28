@@ -6,14 +6,6 @@
 
 * build a database of exercises, start with just js objects until the correct structure is found
 
-* some ideas to start with structure could be:
-  * type of movement (stretch, isometric, negatives, dynamic, etc.)
-  * rep_count
-  * duration
-  * targetted body part/muscle
-  * equipment needed
-  * level? like beginner to advanced - this could also be difficulty
-
 * implement some type of system to keep track of whats been done and incrementally build on reps/duration they can be designed as a goal then user inputs the actual
 
 * eventually move in from command line application to web application, then potential android/ios
@@ -23,6 +15,23 @@
 * potentially add in functionality:
   * user has certain exercises they want to do everyday? this could be part of the bushido application (not yet started) though
   * allow users to add in their own exercises
+
+* Current exercise structure:
+  * four types of exercise: endurance, strength, balance, and flexibility
+    * source: https://www.nia.nih.gov/health/four-types-exercise-can-improve-your-health-and-physical-ability
+  * exercise name
+  * rep count
+  * duration
+  * operation: bilateral or unilateral
+    * NOTE: unilateral vs bilateral doesnt really work with something like the neck, might need to include single/double in exercise names instead
+    * ideally there is a video that helps clarify...
+  * Need to add:
+    * targetted body part/muscle
+  * Possible adds:
+    * equipment needed
+    * level? like beginner to advanced - this could also be difficulty
+    * how to account for reps in which there is a hold each rep?
+* NOTE: creating a db out of already existing exercises would be a lot easier but would likely sacrifice quality..
 
 Current next step:
 * set up project repo
