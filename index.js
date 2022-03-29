@@ -19,29 +19,42 @@ const confirmCompletion = function() {
 let exercise = undefined;
 let today = [];
 
+// const interaction = function() {
+//   let complete = false;
+//   let promiseState = 'new';
+
+//   let intervalHandler = setInterval(() => {
+//     if (promiseState === 'pending') {
+//       return;
+//     } else if (complete) {
+//       today.push(exercise);
+//       console.log(today);
+//       return clearInterval(intervalHandler);
+//     }
+
+//     exercise = getExercise(exercises);
+//     printInstructions(exercise);
+
+//     promiseState = 'pending';
+
+//     confirmCompletion().then(res => {
+//       complete = res;
+//       promiseState = 'complete';
+//     });
+//   }, 1);
+// }
+
 const interaction = function() {
-  let complete = false;
-  let promiseState = 'new';
+  exercise = getExercise(exercises);
+  printInstructions(exercise);
 
-  let intervalHandler = setInterval(() => {
-    if (promiseState === 'pending') {
-      return;
-    } else if (complete) {
-      today.push(exercise);
-      console.log(today);
-      return clearInterval(intervalHandler);
+  confirmCompletion().then(res => {
+    if (res) {
+      console.log('Complete!, you did: ', exercise);
+    } else {
+      interaction();
     }
-
-    exercise = getExercise(exercises);
-    printInstructions(exercise);
-
-    promiseState = 'pending';
-
-    confirmCompletion().then(res => {
-      complete = res;
-      promiseState = 'complete';
-    });
-  }, 1);
+  });
 }
 
 interaction();
