@@ -1,16 +1,14 @@
 const { exercises } = require('./data.js');
 const inquirer = require('inquirer');
 
-const getExercise = function() {
-  const id = Math.floor(Math.random() * exercises.length);
-  return exercises[id];
-}
+const { getExercise, printInstructions } = require('./helpers.js')
 
 const confirmCompletion = function() {
   const questions = [{
     type: 'confirm',
     name: 'complete',
-    message: 'Did you complete this exercise?'
+    message: 'Did you complete this exercise?',
+    default: false
   }];
 
   return inquirer.prompt(questions).then(answers => {
@@ -34,8 +32,8 @@ const interaction = function() {
       return clearInterval(intervalHandler);
     }
 
-    exercise = getExercise();
-    console.log(exercise);
+    exercise = getExercise(exercises);
+    printInstructions(exercise);
 
     promiseState = 'pending';
 
