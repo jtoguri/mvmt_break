@@ -12,7 +12,15 @@ const printInstructions = function(exercise) {
   console.log(`\n${exercise.name} for ${quantity}`);
 };
 
+// Exercises in the history are identified by the date
+const createIdentifier = function() {
+  const date = new Date();
+  const today = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
+  return today;
+}
+
 module.exports = {
   getExercise,
-  printInstructions
+  printInstructions,
+  createIdentifier
 }
