@@ -1,3 +1,6 @@
+// Creating example data for testing
+// Data will be stored in database for fully functioning application
+
 let exercises = [];
 class Exercise {
   constructor(name, exerciseType, duration, repCount, operation) {

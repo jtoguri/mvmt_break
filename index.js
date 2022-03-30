@@ -35,11 +35,10 @@ const interaction = function() {
         const history = (JSON.parse(data));
         if (history[date]) {
           history[date].push(exercise);
-          fsPromises.writeFile('./history.json', JSON.stringify(history, null, 2));
         } else {
           history[date] = [exercise];
-          fsPromises.writeFile('./history.json', JSON.stringify(history, null, 2));
         }
+        fsPromises.writeFile('./history.json', JSON.stringify(history, null, 2));
       })
       .catch(err => {
         const data = {};
