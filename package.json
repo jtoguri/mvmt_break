@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "inquirer": "^8.2.2"
-  }
+  },
+  "name": "mvmt_break",
+  "description": "A command line tool to generate a random exercise.",
+  "version": "1.0.0",
+  "main": "cli.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtoguri/mvmt_break.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtoguri/mvmt_break/issues"
+  },
+  "homepage": "https://github.com/jtoguri/mvmt_break#readme"
 }
