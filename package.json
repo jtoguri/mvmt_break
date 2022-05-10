@@ -1,12 +1,13 @@
 {
   "dependencies": {
-    "inquirer": "^8.2.2"
+    "dotenv": "^16.0.0",
+    "inquirer": "^8.2.2",
+    "mongodb": "^4.5.0"
   },
   "name": "mvmt_break",
   "description": "A command line tool to generate a random exercise.",
   "version": "1.0.0",
   "main": "cli.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

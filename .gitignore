@@ -2,3 +2,4 @@ node_modules
 project_notes
 history.json
 tests.js
+.env
