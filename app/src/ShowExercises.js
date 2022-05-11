@@ -11,6 +11,9 @@ function ShowExercises() {
   );
 
   const handleClick = () => {
+    if (exercises.length > 0) {
+      return setExercises([]);
+    }
     axios.get('/api').then(res => {
       return setExercises(res.data);
     })
@@ -19,10 +22,10 @@ function ShowExercises() {
   return (
     <div style={{margin: 30}}>
       <button onClick={handleClick}>
-        Show all exercises
+        {exercises.length ? "Hide exercises" : "Show all exercises"}
       </button>
 
-      {exercises && <ul>{exerciseList}</ul>} 
+      {exercises.length > 0 && <ul>{exerciseList}</ul>} 
     </div>
   )
 }
