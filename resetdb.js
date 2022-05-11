@@ -1,8 +1,10 @@
 require("dotenv").config();
 
+const { v1: uuidv1 } = require('uuid');
+
 const fs = require("fs");
 
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId} = require('mongodb');
 
 const username = encodeURIComponent(process.env.DB_USER);
 const password = encodeURIComponent(process.env.DB_PASS)
@@ -31,7 +33,7 @@ async function main() {
     }
 
     console.log("Adding the collections...");
-    addCollections(db);
+    await addExercises(db);
 
   } finally {
     await client.close();
@@ -46,11 +48,18 @@ const clearCollections = async function(db) {
   return;
 }
 
-const addCollections = async function(db) {
-  const seeds = fs.readdirSync("./db/collections");
-  for (const fn of seeds) {
-    console.log(fn.slice(0, -5));
+const addExercises = async function(db) {
+  console.log("Adding the exercises collection");
+  const collection = await db.createCollection("exercises");
+
+  const exercises = JSON.parse(
+    fs.readFileSync(`./db/collections/exercises.json`, "utf8"));
+
+  for (const exercise of exercises) {
+    exercise["_id"] = uuidv1();
   }
+
+  return await collection.insertMany(exercises);
 }
 
 main();

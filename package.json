@@ -2,7 +2,8 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "inquirer": "^8.2.2",
-    "mongodb": "^4.5.0"
+    "mongodb": "^4.5.0",
+    "uuid": "^8.3.2"
   },
   "name": "mvmt_break",
   "description": "A command line tool to generate a random exercise.",

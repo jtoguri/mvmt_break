@@ -1,0 +1,59 @@
+[
+  {
+    "name": "pushups",
+    "type": "strength",
+    "description": "Lorem ipsum blah blah blah",
+    "defaultReps": 5,
+    "defaultTime": null
+  },
+
+  {
+    "name": "seiza",
+    "type": "flexibility",
+    "description": "Lorem ipsum blah blah blah",
+    "defaultReps": null,
+    "defaultTime": 120
+  },
+  {
+    "name": "wall tibialis raises",
+    "type": "strength",
+    "description": "Lorem ipsum blah blah blah",
+    "defaultReps": 25,
+    "defaultTime": null
+  },
+  {
+    "name": "plantar stretch",
+    "type": "flexibility",
+    "description": "Lorem ipsum blah blah blah",
+    "defaultReps": null,
+    "defaultTime": 120
+  },
+  {
+    "name": "standing hamstring curl",
+    "type": "strength",
+    "description": "Lorem ipsum blah blah blah",
+    "defaultReps": 20,
+    "defaultTime": null
+  },
+  {
+    "name": "prone hamstring curl w/ band",
+    "type": "strength",
+    "description": "Lorem ipsum blah blah blah",
+    "defaultReps": 10,
+    "defaultTime": null
+  },
+  {
+    "name": "hamstring end range hold standing",
+    "type": "strength",
+    "description": "Lorem ipsum blah blah blah",
+    "defaultReps": null,
+    "defaultTime": 15
+  },
+  {
+    "name": "doorway crimp",
+    "type": "strength",
+    "description": "Lorem ipsum blah blah blah",
+    "defaultReps": null,
+    "defaultTime": 10
+  }
+]
