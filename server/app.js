@@ -13,6 +13,14 @@ app.get('/api', (req, res) => {
   .then(exercises => res.send(exercises));
 });
 
+app.get('/api/randomExercise', (req, res) => {
+  dbconnect().then(db => {
+    return db.collection('exercises').aggregate([{$sample: {size: 1}}])
+      .toArray();
+  })
+  .then(exercise => res.send(exercise));
+});
+
 app.listen(port, () => {
   console.log(`listening on port: ${port}`);
 });

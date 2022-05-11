@@ -1,19 +1,25 @@
+import { useState } from 'react';
 import axios from 'axios';
 
 function Button() {
-  const handleClick = async () => {
-    try {
-      const response = await axios.get('/api');
-      const body = response.data;
-      alert(body);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const [exercise, setExercise] = useState({});
+
+  const handleClick = () => {
+    axios.get('/api/randomExercise').then(res => {
+      return setExercise(res.data[0]);
+    });
+  };
+
   return (
-    <button onClick={handleClick}>
-      Generate new exercise
-    </button>
+    <div>
+      <button onClick={handleClick}>
+        Show random exercise
+      </button>
+      {Object.keys(exercise).length > 0 &&  
+        <div>
+          <span>exercise: {exercise.name}</span>
+        </div>}
+    </div>
   );
 }
 
