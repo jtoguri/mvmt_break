@@ -1,4 +1,5 @@
 require("dotenv").config();
+const exercises = require('./db/collections/exercises.json');
 
 const { v1: uuidv1 } = require('uuid');
 
@@ -51,13 +52,6 @@ const clearCollections = async function(db) {
 const addExercises = async function(db) {
   console.log("Adding the exercises collection");
   const collection = await db.createCollection("exercises");
-
-  const exercises = JSON.parse(
-    fs.readFileSync(`./db/collections/exercises.json`, "utf8"));
-
-  for (const exercise of exercises) {
-    exercise["_id"] = uuidv1();
-  }
 
   return await collection.insertMany(exercises);
 }
