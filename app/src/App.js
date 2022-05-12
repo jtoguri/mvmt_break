@@ -1,6 +1,7 @@
 import './App.css';
 import Button from './Button.js';
 import ShowExercises from './ShowExercises.js';
+import Form from './Form.js';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Button />
 
       <ShowExercises />
+      <Form />
     </div>
   );
 }
