@@ -3,3 +3,7 @@ project_notes
 history.json
 tests.js
 .env
+cli.js
+helpers.js
+data.js
+
