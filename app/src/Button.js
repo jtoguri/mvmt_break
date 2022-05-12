@@ -6,7 +6,7 @@ function Button() {
 
   const handleClick = () => {
     axios.get('/api/randomExercise').then(res => {
-      return setExercise(res.data[0]);
+      return setExercise(res.data);
     });
   };
 

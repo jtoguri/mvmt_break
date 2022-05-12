@@ -10,11 +10,20 @@ const uri =
 
 const client = new MongoClient(uri);
 
-const dbconnect = async () => {
-  await client.connect();
+const dbconnect = () => {
+  const clientSingleton = {
+    client: undefined,
+    getClient: async () => {
+      if (!this.client) {
+        this.client = await client.connect();
+      }
+      return this.client;
+    }
+  }
 
   return async () => {
-    return await client.db(process.env.DB_NAME);
+    return await (await clientSingleton.getClient())
+      .db(process.env.DB_NAME);
   }
 }
 
