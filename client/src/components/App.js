@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
-import GetExerciseButton from './GetExerciseButton.js';
+//import GetExerciseButton from './GetExerciseButton.js';
+import Home from './Home';
 import CompleteExerciseButton from './CompleteExerciseButton.js';
 import ShowExercises from './ShowExercises.js';
 import Form from './Form.js';
@@ -15,16 +16,15 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [randomExercise, setRandomExercise] = useState({});
-  const [exerciseCompleted, setExerciseState] = useState(false);
+  //const [randomExercise, setRandomExercise] = useState({});
+  //const [exerciseCompleted, setExerciseState] = useState(false);
 
   return (
     <div className="App">
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<GetExerciseButton
-            exercise={randomExercise} setExercise={setRandomExercise} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} /> 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
