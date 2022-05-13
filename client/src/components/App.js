@@ -6,6 +6,8 @@ import ShowExercises from './ShowExercises.js';
 import Form from './Form.js';
 import Header from './Header.js';
 import About from './About';
+import Register from './Register';
+import Login from './Login';
 import {
   BrowserRouter,
   Routes,
@@ -24,6 +26,8 @@ function App() {
           <Route path="/" element={<GetExerciseButton
             exercise={randomExercise} setExercise={setRandomExercise} />} />
           <Route path="/about" element={<About />} /> 
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         {/*{Object.keys(randomExercise).length > 0 &&
           <CompleteExerciseButton exercise={randomExercise}
           setExercise={setRandomExercise} completed={exerciseCompleted} 
