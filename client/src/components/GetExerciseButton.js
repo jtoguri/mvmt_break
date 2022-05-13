@@ -1,5 +1,6 @@
 //import { useState } from 'react';
 import axios from 'axios';
+import './GetExerciseButton.css';
 
 function GetExerciseButton({ exercise, setExercise }) {
 
@@ -12,7 +13,7 @@ function GetExerciseButton({ exercise, setExercise }) {
   return (
     <div>
       <button onClick={handleClick}>
-        Show random exercise
+        Take a Break
       </button>
       {Object.keys(exercise).length > 0 &&  
         <div>
