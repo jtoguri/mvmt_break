@@ -1,0 +1,33 @@
+header {
+  height: 64px;
+  width: 100%;
+  background-color: lightgreen;
+  position: sticky;
+  top: 0;
+  margin-bottom: 3em;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  height: inherit;
+  width: inherit;
+  justify-content: space-around;
+}
+
+h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0; 
+  column-gap: 3em;
+}
+
+header nav ul li a {
+  color: black;
+  text-decoration: none;
+}

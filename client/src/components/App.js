@@ -4,6 +4,7 @@ import GetExerciseButton from './GetExerciseButton.js';
 import CompleteExerciseButton from './CompleteExerciseButton.js';
 import ShowExercises from './ShowExercises.js';
 import Form from './Form.js';
+import Header from './Header.js';
 
 function App() {
   const [randomExercise, setRandomExercise] = useState({});
@@ -11,9 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>Mvmt Break</h1>
-      </header>
+      <Header />
       <GetExerciseButton exercise={randomExercise} 
         setExercise={setRandomExercise}/>
       
