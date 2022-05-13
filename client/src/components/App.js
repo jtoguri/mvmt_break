@@ -5,6 +5,12 @@ import CompleteExerciseButton from './CompleteExerciseButton.js';
 import ShowExercises from './ShowExercises.js';
 import Form from './Form.js';
 import Header from './Header.js';
+import About from './About';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
   const [randomExercise, setRandomExercise] = useState({});
@@ -13,16 +19,20 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <GetExerciseButton exercise={randomExercise} 
-        setExercise={setRandomExercise}/>
-      
-      {Object.keys(randomExercise).length > 0 &&
-        <CompleteExerciseButton exercise={randomExercise}
-        setExercise={setRandomExercise} completed={exerciseCompleted} 
-        toggleCompletion={setExerciseState} />
-      }
-      <ShowExercises />
-      <Form />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<GetExerciseButton
+            exercise={randomExercise} setExercise={setRandomExercise} />} />
+          <Route path="/about" element={<About />} /> 
+        {/*{Object.keys(randomExercise).length > 0 &&
+          <CompleteExerciseButton exercise={randomExercise}
+          setExercise={setRandomExercise} completed={exerciseCompleted} 
+          toggleCompletion={setExerciseState} />
+        }
+        <ShowExercises />
+        <Form />*/}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
