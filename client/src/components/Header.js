@@ -5,11 +5,11 @@ function Header () {
   return (
     <header>
       <nav>
-        <h1>MVMT Break</h1>
+        <a href="/"><h1>MVMT Break</h1></a>
         <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Sign In</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href="register">Sign Up</a></li>
+          <li><a href="login">Sign In</a></li>
         </ul>
       </nav>
     </header>

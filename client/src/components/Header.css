@@ -27,7 +27,7 @@ nav ul {
   column-gap: 3em;
 }
 
-header nav ul li a {
+header a {
   color: black;
   text-decoration: none;
 }
