@@ -1,0 +1,11 @@
+ul {
+  list-style: none;
+}
+
+ul.exercise-info {
+  font-size: 1.5em;
+}
+
+ul.exercise-info span {
+  font-weight: bold;
+}

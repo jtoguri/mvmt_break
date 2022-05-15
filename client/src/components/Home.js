@@ -1,4 +1,5 @@
 import Button from './GetExerciseButton';
+import './Home.css';
 import {useState} from 'react';
 
 function Home () {
@@ -13,13 +14,13 @@ function Home () {
       <Button exercise={randomExercise} setExercise={setRandomExercise}/>
 
       {Object.keys(randomExercise).length > 0 &&
-        <ul>
-          <li>exercise: {randomExercise.name}</li>
-          <li>type: {randomExercise.type}</li>
+        <ul className="exercise-info">
+          <li><span>exercise:</span>  {randomExercise.name}</li>
+          <li><span>type:</span> {randomExercise.type}</li>
           {randomExercise.defaultReps &&
-            <li>reps: {randomExercise.defaultReps}</li>}
+            <li><span>reps:</span> {randomExercise.defaultReps}</li>}
           {randomExercise.defaultTime &&
-            <li>duration: {randomExercise.defaultTime}</li>}
+            <li><span>duration:</span> {randomExercise.defaultTime}</li>}
         </ul>}
     </div>
   );
