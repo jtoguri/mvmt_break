@@ -11,6 +11,16 @@ function Home () {
       exercise from our exercise database.</p>
 
       <Button exercise={randomExercise} setExercise={setRandomExercise}/>
+
+      {Object.keys(randomExercise).length > 0 &&
+        <ul>
+          <li>exercise: {randomExercise.name}</li>
+          <li>type: {randomExercise.type}</li>
+          {randomExercise.defaultReps &&
+            <li>reps: {randomExercise.defaultReps}</li>}
+          {randomExercise.defaultTime &&
+            <li>duration: {randomExercise.defaultTime}</li>}
+        </ul>}
     </div>
   );
 }
