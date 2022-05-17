@@ -1,5 +1,6 @@
 require("dotenv").config();
 const exercises = require('./db/collections/exercises.json');
+const users = require("./db/collections/users.json");
 
 const { v1: uuidv1 } = require('uuid');
 
@@ -35,6 +36,7 @@ async function main() {
 
     console.log("Adding the collections...");
     await addExercises(db);
+    await addUsers(db);
 
   } finally {
     await client.close();
@@ -54,6 +56,13 @@ const addExercises = async function(db) {
   const collection = await db.createCollection("exercises");
 
   return await collection.insertMany(exercises);
+}
+
+const addUsers = async function(db) {
+  console.log("Adding the users collection");
+  const collection = await db.createCollection("users");
+  
+  return await collection.insertMany(users);
 }
 
 main();

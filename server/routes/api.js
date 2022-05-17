@@ -21,4 +21,8 @@ router.get('/randomExercise', async (req, res) => {
   res.send(exercise);
 })
 
+router.get('/login', async (req, res) => {
+  
+})
+
 module.exports = router;
