@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const { createInteraction } = require('../db/db_interactions'); 
 
@@ -7,6 +8,8 @@ const { createInteraction } = require('../db/db_interactions');
 //const {conn} = require('../db/index')
 
 const router = express.Router();
+
+router.use(bodyParser.json());
 
 router.get('/', async (req, res) => {
   console.log(getAllExercises);
@@ -21,8 +24,13 @@ router.get('/randomExercise', async (req, res) => {
   res.send(exercise);
 })
 
-router.get('/login', async (req, res) => {
-  
+router.post('/login', async (req, res) => {
+  //console.log(req.body);
+  const { username , password } = req.body;
+  const { getUser } = await createInteraction();
+  const user = await getUser(username);
+  console.log(user);
+  res.send("db query");  
 })
 
 module.exports = router;
