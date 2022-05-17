@@ -8,7 +8,7 @@ function Login () {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.get('/api/login', {
+    const res = await axios.post('/api/login', {
       username,
       email,
       password
