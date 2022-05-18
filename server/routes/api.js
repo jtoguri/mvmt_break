@@ -25,11 +25,14 @@ router.get('/randomExercise', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-  //console.log(req.body);
   const { username , password } = req.body;
   const { getUser } = await createInteraction();
   const user = await getUser(username);
-  console.log(user);
+  
+  if (!user) {
+    return res.status(400).send("Invalid username or password");
+  }
+  //console.log(user);
   res.send("db query");  
 })
 
