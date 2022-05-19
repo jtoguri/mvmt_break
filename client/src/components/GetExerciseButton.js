@@ -6,6 +6,7 @@ function GetExerciseButton({ exercise, setExercise }) {
 
   const handleClick = () => {
     axios.get('/api/randomExercise').then(res => {
+      console.log(res.data)
       return setExercise(res.data);
     });
   };
@@ -15,10 +16,6 @@ function GetExerciseButton({ exercise, setExercise }) {
       <button onClick={handleClick}>
         Take a Break
       </button>
-      {Object.keys(exercise).length > 0 &&  
-        <div>
-          <span>exercise: {exercise.name}</span>
-        </div>}
     </div>
   );
 }
