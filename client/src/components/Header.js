@@ -1,6 +1,6 @@
 import './Header.css';
 
-function Header () {
+function Header ({ session }) {
   
   return (
     <header>
@@ -9,7 +9,8 @@ function Header () {
         <ul>
           <li><a href="about">About</a></li>
           <li><a href="register">Sign Up</a></li>
-          <li><a href="login">Sign In</a></li>
+          <li>{!session ? <a href="login">Sign In</a> : <a
+            href="logout">Sign Out</a>}</li>
         </ul>
       </nav>
     </header>

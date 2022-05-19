@@ -19,15 +19,19 @@ function App() {
   //const [randomExercise, setRandomExercise] = useState({});
   //const [exerciseCompleted, setExerciseState] = useState(false);
 
+  const storedJwt = localStorage.getItem('token');
+  const [session, setSession] = useState(storedJwt || null);
+
   return (
     <div className="App">
-      <Header />
+      <Header session={session} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login session={session}
+            setSession={setSession}/>} />
 
         {/*{Object.keys(randomExercise).length > 0 &&
           <CompleteExerciseButton exercise={randomExercise}
