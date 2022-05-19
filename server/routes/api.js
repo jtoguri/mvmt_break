@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 
 const { createInteraction } = require('../db/db_interactions'); 
 
@@ -33,7 +34,19 @@ router.post('/login', async (req, res) => {
     return res.status(400).send("Invalid username or password");
   }
   //console.log(user);
-  res.send("db query");  
+
+  const payload = {
+    id: user._id,
+    username: user.username
+  }
+
+  jwt.sign(payload, "secret", { expiresIn: "10d" }, function(err, token)
+  {
+    res.json({
+      success: true,
+      token: "Bearer" + token
+    });  
+  });
 })
 
 module.exports = router;
