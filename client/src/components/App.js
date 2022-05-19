@@ -24,18 +24,10 @@ function App() {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
 
         {/*{Object.keys(randomExercise).length > 0 &&
           <CompleteExerciseButton exercise={randomExercise}
