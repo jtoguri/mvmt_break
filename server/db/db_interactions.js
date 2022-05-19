@@ -32,6 +32,14 @@ const interactions = () => {
       getAllExercises: async () => {
         const allExercises = await exercises.find().toArray();
         return allExercises;
+      },
+
+      getUser: async (username) => {
+        const user = await db.collection('users').findOne({
+          username,
+        });
+
+        return user;
       }
     };
   };
