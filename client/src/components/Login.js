@@ -2,9 +2,16 @@ import axios from 'axios';
 import { useState } from 'react';
 import './Form.css';
 
-function Login () {
+function Login ({ session, setSession }) {
   const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState("");
+  if (session) {
+    return (
+      <div>
+        <h4>You are already logged in.</h4>
+      </div>
+    )
+  }
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,7 +20,9 @@ function Login () {
         username,
         password
       });
-      console.log(res.data);
+      
+      localStorage.setItem('token', res.data.token);
+      return setSession(res.data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -21,6 +30,7 @@ function Login () {
 
   return (
     <div>
+      {session && <h4>You're already logged in</h4>}
       <h2>Sign In</h2>
       <p>Sign in to track your exercises.</p>
       
