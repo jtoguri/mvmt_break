@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header session={session} />
+      <Header session={session} setSession={setSession} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
