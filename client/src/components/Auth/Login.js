@@ -30,7 +30,6 @@ function Login ({ session, setSession }) {
 
   return (
     <div>
-      {session && <h4>You're already logged in</h4>}
       <h2>Sign In</h2>
       <p>Sign in to track your exercises.</p>
       
@@ -47,7 +46,7 @@ function Login ({ session, setSession }) {
             value={password} onChange={(e) => setPassword(e.target.value)} 
               required />
         </div>
-        <input type="submit" value="Login" />
+        <input className="btn" type="submit" value="Login" />
       </form>
     </div>
   )
