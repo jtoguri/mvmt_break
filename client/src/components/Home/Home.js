@@ -1,9 +1,11 @@
-import Button from '../Button/GetExerciseButton';
+import GetExerciseButton from '../Button/GetExerciseButton';
+import CompleteExerciseButton from '../Button/CompleteExerciseButton';
 import './Home.css';
-import {useState} from 'react';
+import { useState } from 'react';
 
 function Home () {
   const [randomExercise, setRandomExercise] = useState({});
+  const [completed, setCompleted] = useState(false);
 
   return (
     <div>
@@ -11,7 +13,8 @@ function Home () {
       <p>Press the Take a Break button below to generate a random
       exercise from our exercise database.</p>
 
-      <Button exercise={randomExercise} setExercise={setRandomExercise}/>
+      <GetExerciseButton exercise={randomExercise} 
+        setExercise={setRandomExercise} />
 
       {Object.keys(randomExercise).length > 0 &&
         <ul className="exercise-info">
@@ -22,6 +25,10 @@ function Home () {
           {randomExercise.defaultTime &&
             <li><span>duration:</span> {randomExercise.defaultTime}</li>}
         </ul>}
+
+      {Object.keys(randomExercise).length > 0 && 
+        <CompleteExerciseButton exercise={randomExercise}
+          completed={completed} setCompleted={setCompleted} />}
     </div>
   );
 }
