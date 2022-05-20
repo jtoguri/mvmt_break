@@ -1,4 +1,4 @@
-import Button from './GetExerciseButton';
+import Button from '../Button/GetExerciseButton';
 import './Home.css';
 import {useState} from 'react';
 

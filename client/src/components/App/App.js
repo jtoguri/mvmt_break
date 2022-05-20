@@ -1,14 +1,14 @@
 import './App.css';
 import { useState } from 'react';
 //import GetExerciseButton from './GetExerciseButton.js';
-import Home from './Home';
-import CompleteExerciseButton from './CompleteExerciseButton.js';
-import ShowExercises from './ShowExercises.js';
-import Form from './Form.js';
-import Header from './Header.js';
-import About from './About';
-import Register from './Register';
-import Login from './Login';
+import Home from '../Home/Home';
+//import CompleteExerciseButton from '../Button/CompleteExerciseButton';
+//import ShowExercises from '../ShowExercises.js';
+//import Form from './Form.js';
+import Header from '../Header/Header';
+import About from '../About/About';
+import Register from '../Auth/Register';
+import Login from '../Auth/Login';
 import {
   BrowserRouter,
   Routes,

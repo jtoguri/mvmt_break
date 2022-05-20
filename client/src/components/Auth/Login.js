@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import './Form.css';
+import './AuthForm.css';
 
 function Login ({ session, setSession }) {
   const [username, setUsername] = useState(""); 
