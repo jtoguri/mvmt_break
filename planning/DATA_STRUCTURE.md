@@ -23,5 +23,9 @@
 
 ## History
 ```js
-  const history = [exercise] //An array of exercises that a user has completed
+  const history = {
+    user_id: String, //User id indicates who's history it is
+    date: String, //Date the exercise was performed
+    exercise //The exercise object
+  }
 ```
