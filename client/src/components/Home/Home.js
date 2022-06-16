@@ -14,7 +14,7 @@ function Home () {
       exercise from our exercise database.</p>
 
       <GetExerciseButton exercise={randomExercise} 
-        setExercise={setRandomExercise} />
+        setExercise={setRandomExercise} setCompleted={setCompleted} />
 
       {Object.keys(randomExercise).length > 0 &&
         <ul className="exercise-info">
