@@ -40,7 +40,15 @@ const interactions = () => {
         });
 
         return user;
+      },
+
+      updateHistory: async (history) => {
+        const newEntry = await 
+          db.collection('history').insertOne(history);
+        
+        return newEntry;
       }
+
     };
   };
 };

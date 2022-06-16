@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const verify = require('../config/passport.js');
 
 const { createInteraction } = require('../db/db_interactions'); 
 
@@ -46,6 +48,35 @@ router.post('/login', async (req, res) => {
       success: true,
       token: "Bearer" + token
     });  
+  });
+})
+
+router.post('/history', async (req, res) => {
+  const { updateHistory } = await createInteraction();
+  //const value = await verify(passport, getUserById);
+  //console.log(value);
+  const token = req.body.token.slice(6);
+
+  jwt.verify(token, 'secret', async function(err, decoded) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    
+    const data = {
+      user_id: decoded.id,
+      date: req.body.date,
+      exercise: req.body.exercise
+    };
+
+    const newEntry = await updateHistory(data);
+
+    if (!newEntry.acknowledged) {
+      console.log("some error happened");
+      return;
+    }
+
+    res.send(true); 
   });
 })
 

@@ -6,28 +6,40 @@ function CompleteExerciseButton ({
   completed,
   setCompleted }) {
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      alert("Only registered users can save an exercise to their history")
+      return;
+    }
+
     if (completed) {
       console.log("already completed")
       return;
     }
     
     const date = Date.now().toString();
-    const user = localStorage.getItem('token');
 
     const history = {
-      user, 
+      token, 
       date,
       exercise: { ...exercise }
-    }
+    };
+
+    /*const config = {
+      headers: {
+        'Authorization': `bearer ${user}`
+      }
+    }*/
 
     console.log(history);
 
-    /*axios.post('/history', {
-      date,
-      ...exercise
-    });*/
-    setCompleted(true);
+    const res = await axios.post('/api/history', history);
+
+    if (res.data === true) {
+      setCompleted(true);
+    }
 
     return;
   }
