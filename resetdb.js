@@ -37,6 +37,7 @@ async function main() {
     console.log("Adding the collections...");
     await addExercises(db);
     await addUsers(db);
+    await addHistory(db);
 
   } finally {
     await client.close();
@@ -63,6 +64,11 @@ const addUsers = async function(db) {
   const collection = await db.createCollection("users");
   
   return await collection.insertMany(users);
+}
+
+const addHistory = async function(db) {
+  console.log("Adding the history collection");
+  const collection = await db.createCollection("history");
 }
 
 main();
