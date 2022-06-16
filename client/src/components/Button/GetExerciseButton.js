@@ -1,6 +1,6 @@
 //import { useState } from 'react';
 import axios from 'axios';
-import './GetExerciseButton.css';
+import './Button.css';
 
 function GetExerciseButton({ exercise, setExercise }) {
 
@@ -13,7 +13,7 @@ function GetExerciseButton({ exercise, setExercise }) {
 
   return (
     <div>
-      <button onClick={handleClick}>
+      <button className="btn"  onClick={handleClick}>
         Take a Break
       </button>
     </div>

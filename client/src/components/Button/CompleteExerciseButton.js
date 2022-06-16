@@ -1,21 +1,24 @@
+import './Button.css';
 
 function CompleteExerciseButton ({ 
   exercise, 
-  setExercise, 
   completed,
-  toggleCompletion }) {
+  setCompleted }) {
 
   const handleClick = () => {
-    if (completed) return;
+    if (completed) {
+      console.log("already completed")
+      return;
+    }
     
-    toggleCompletion(true);
+    setCompleted(true);
 
     return;
   }
   
   return (
     <div>
-      <button onClick={handleClick}>
+      <button className="btn" onClick={handleClick}>
         Complete Exercise
       </button>
       {completed && <p>Congrats! You completed {exercise.name}.</p>}

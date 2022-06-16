@@ -1,7 +1,8 @@
-# Mvmt_Break (to be renamed)
+# Mvmt_Break
 
 ## Description
-***A command line tool to generate a random exercise.***
+***A full stack web application designed to allow users to easily take
+movement breaks during long periods of sedentary work.***
 
 ## Motivation
 While learning to code I realized I was sitting down for extended periods of time. Mvmt_Break helps to break up these sitting periods with a mix of exercises.
