@@ -12,6 +12,15 @@
   }
 ```
 
+## User
+```js
+  const user = {
+    _id: String, //MongoDB generated ObjectId
+    username: String, //User inputted username
+    passwd: String //Hashed password for user
+  }
+```
+
 ## History
 ```js
   const history = [exercise] //An array of exercises that a user has completed
