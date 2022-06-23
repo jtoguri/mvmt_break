@@ -19,7 +19,7 @@ function CompleteExerciseButton ({
       return;
     }
     
-    const date = Date.now().toString();
+    const date = Date.now();
 
     const history = {
       token, 
