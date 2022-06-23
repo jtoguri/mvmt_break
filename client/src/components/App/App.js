@@ -1,14 +1,11 @@
 import './App.css';
 import { useState } from 'react';
-//import GetExerciseButton from './GetExerciseButton.js';
 import Home from '../Home/Home';
-//import CompleteExerciseButton from '../Button/CompleteExerciseButton';
-//import ShowExercises from '../ShowExercises.js';
-//import Form from './Form.js';
 import Header from '../Header/Header';
 import About from '../About/About';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
+import Profile from '../Profile/Profile';
 import {
   BrowserRouter,
   Routes,
@@ -16,9 +13,6 @@ import {
 } from "react-router-dom";
 
 function App() {
-  //const [randomExercise, setRandomExercise] = useState({});
-  //const [exerciseCompleted, setExerciseState] = useState(false);
-
   const storedJwt = localStorage.getItem('token');
   const [session, setSession] = useState(storedJwt || null);
 
@@ -28,6 +22,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login session={session}

@@ -47,8 +47,17 @@ const interactions = () => {
           db.collection('history').insertOne(history);
         
         return newEntry;
-      }
+      },
 
+      getHistory: async (userId) => {
+        const query = { "user_id": userId }
+        console.log(query);
+        const userHistory = await db.collection('history')
+          .find(query)
+          .toArray();
+        return userHistory;
+      }
+  
     };
   };
 };

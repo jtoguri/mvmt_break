@@ -80,4 +80,23 @@ router.post('/history', async (req, res) => {
   });
 })
 
+router.get('/history/:token', async (req, res) => {
+  const token = req.params.token.slice(6);
+
+  jwt.verify(token, 'secret', async function(err, decoded) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    const { getHistory } = await createInteraction();
+
+    console.log(decoded.id);
+
+    const history = await getHistory(decoded.id);
+    console.log(history);
+    history ? res.send(history) : res.send("didnt work");
+  });
+})
+
 module.exports = router;
