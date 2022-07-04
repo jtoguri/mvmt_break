@@ -1,11 +1,13 @@
-import './App.css';
-import { useState } from 'react';
 import Home from '../Home/Home';
 import Header from '../Header/Header';
 import About from '../About/About';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
 import Profile from '../Profile/Profile';
+
+import './App.css';
+
+import { useState } from 'react';
 import {
   BrowserRouter,
   Routes,
