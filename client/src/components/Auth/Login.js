@@ -5,6 +5,8 @@ import './AuthForm.css';
 function Login ({ session, setSession }) {
   const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState("");
+  const [error, setError] =useState("");
+
   if (session) {
     return (
       <div>
@@ -24,7 +26,7 @@ function Login ({ session, setSession }) {
       localStorage.setItem('token', res.data.token);
       return setSession(res.data);
     } catch (error) {
-      console.log(error.response.data);
+      return setError(error.response.data);
     }
   }
 
@@ -34,6 +36,7 @@ function Login ({ session, setSession }) {
       <p>Sign in to track your exercises.</p>
       
       <form action="/api/login" method="get" onSubmit={handleSubmit}>
+        <span className="error-msg" >{error}</span>
         <div>
           <label htmlFor="username">Username/Email </label>
           <input type="text" name="username" id="username"
