@@ -17,15 +17,17 @@
   const user = {
     _id: String, //MongoDB generated ObjectId
     username: String, //User inputted username
-    passwd: String //Hashed password for user
+    password: String, //Hashed password for user
+    email: String //User email
   }
 ```
 
 ## History
 ```js
   const history = {
+    _id: String, //MongoDB generated ObjectId 
     user_id: String, //User id indicates who's history it is
     date: String, //Date the exercise was performed
-    exercise //The exercise object
+    exercise: { ...exercise }//The exercise object
   }
 ```
