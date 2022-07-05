@@ -1,4 +1,4 @@
-# Mvmt_Break
+# Mvmt Break
 
 ## Description
 ***A full stack web application designed to allow users to easily take
