@@ -1,21 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
-const verify = require('../config/passport.js');
+
+//Passport code that I couldn't get working, just using jwt's right now
+//const passport = require('passport');
+//const verify = require('../config/passport.js');
 
 const { createInteraction } = require('../db/db_interactions'); 
-
-//const { getRandomExercise } = createInteraction();
-
-//const {conn} = require('../db/index')
 
 const router = express.Router();
 
 router.use(bodyParser.json());
 
 router.get('/', async (req, res) => {
-  console.log(getAllExercises);
+  const { getAllExercises } = await createInteraction();
   const exercises = await getAllExercises();
   res.send(exercises);
 })

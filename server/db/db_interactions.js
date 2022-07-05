@@ -30,13 +30,15 @@ const interactions = () => {
       // to set a lmit (see mognodb node driver docs: batchSize,
       // asyncIterator) it is returning an abstract cursor
       getAllExercises: async () => {
+        const exercises = await db.collection('exercises');
         const allExercises = await exercises.find().toArray();
         return allExercises;
       },
 
-      getUser: async (username) => {
+      getUser: async (username, password) => {
         const user = await db.collection('users').findOne({
           username,
+          password
         });
 
         return user;
