@@ -1,30 +1,46 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from '../UserContext';
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import './AuthForm.css';
 
-function Login ({ session, setSession }) {
+function Login() {
   const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState("");
   const [error, setError] =useState("");
+  
+  const { user, setUser } = useContext(UserContext);
 
-  if (session) {
+  //On the login page I need to check where the user came from to know
+  //where to send them back to and which data to track
+
+  const navigate = useNavigate(); 
+  const location = useLocation();
+
+  console.log(location);
+
+  const from = location.state?.from?.pathname || "/";
+
+  /*if (user) {
     return (
-      <div>
-        <h4>You are already logged in.</h4>
-      </div>
-    )
-  }
+      <Navigate to="/" replace={true} />
+    );
+  }*/
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/login', {
+      const res = await axios.post('/api/users/login', {
         username,
         password
       });
       
       localStorage.setItem('token', res.data.token);
-      return setSession(res.data);
+      
+      setUser(res.data);
+
+      navigate(from, { replace: true, state: location.state.exercise });
+      
     } catch (error) {
       return setError(error.response.data);
     }

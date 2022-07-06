@@ -1,16 +1,27 @@
+import { useContext } from 'react';
+
+import { useNavigate, useLocation } from 'react-router-dom';
+
+import { UserContext } from '../UserContext';
+
 import './Button.css';
 import axios from 'axios';
 
-function CompleteExerciseButton ({ 
+export default function CompleteExerciseButton ({ 
   exercise, 
   completed,
   setCompleted }) {
+  
+  const { user } = useContext(UserContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleClick = async () => {
-    const token = localStorage.getItem('token');
 
-    if (!token) {
-      alert("Only registered users can save an exercise to their history")
+    if (!user) {
+      navigate("/login", { replace: true, state: {from: location,
+      exercise} });
       return;
     }
 
@@ -20,20 +31,13 @@ function CompleteExerciseButton ({
     }
     
     const date = new Date(Date.now()).toISOString();
+    const token = localStorage.getItem('token');
 
     const history = {
       token, 
       date,
       exercise: { ...exercise }
     };
-
-    /*const config = {
-      headers: {
-        'Authorization': `bearer ${user}`
-      }
-    }*/
-
-    console.log(history);
 
     const res = await axios.post('/api/history', history);
 
@@ -46,6 +50,7 @@ function CompleteExerciseButton ({
   
   return (
     <div>
+      {!user && <p>Please sign in to save the exercise in your history</p>}
       <button className="btn" onClick={handleClick}>
         Complete Exercise
       </button>
@@ -53,5 +58,3 @@ function CompleteExerciseButton ({
     </div>
   )
 }
-
-export default CompleteExerciseButton;

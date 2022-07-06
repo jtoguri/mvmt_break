@@ -5,40 +5,42 @@ import Register from '../Auth/Register';
 import Login from '../Auth/Login';
 import Profile from '../Profile/Profile';
 
+import { UserContext } from '../UserContext';
+
 import './App.css';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
 
+import jwt_decode from 'jwt-decode';
+
 function App() {
   const storedJwt = localStorage.getItem('token');
-  const [session, setSession] = useState(storedJwt || null);
+  
+  const decodedUser = storedJwt ? jwt_decode(storedJwt) : null;
+  
+  const [user, setUser] = useState(decodedUser);
+  
+  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <div className="App">
-      <Header session={session} setSession={setSession} />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login session={session}
-            setSession={setSession}/>} />
-
-        {/*{Object.keys(randomExercise).length > 0 &&
-          <CompleteExerciseButton exercise={randomExercise}
-          setExercise={setRandomExercise} completed={exerciseCompleted} 
-          toggleCompletion={setExerciseState} />
-        }
-        <ShowExercises />
-        <Form />*/}
-        </Routes>
-      </BrowserRouter>
+      <UserContext.Provider value={value}>
+        <Header />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+      </UserContext.Provider>
     </div>
   );
 }
