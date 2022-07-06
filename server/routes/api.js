@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
+const userRouter = require('./users');
+
 //Passport code that I couldn't get working, just using jwt's right now
 //const passport = require('passport');
 //const verify = require('../config/passport.js');
@@ -12,12 +14,14 @@ const router = express.Router();
 
 router.use(bodyParser.json());
 
+// Following the '/api' path shows all the exercises in the db for now
 router.get('/', async (req, res) => {
   const { getAllExercises } = await createInteraction();
   const exercises = await getAllExercises();
   res.send(exercises);
 })
 
+// Sends a randomExercise back to the client
 router.get('/randomExercise', async (req, res) => {
   const { getRandomExercise } = await createInteraction();
   const exercise = await getRandomExercise();
@@ -25,29 +29,7 @@ router.get('/randomExercise', async (req, res) => {
   res.send(exercise);
 })
 
-router.post('/login', async (req, res) => {
-  const { username , password } = req.body;
-  const { getUser } = await createInteraction();
-  const user = await getUser(username);
-  
-  if (!user) {
-    return res.status(400).send("Invalid username or password");
-  }
-  //console.log(user);
-
-  const payload = {
-    id: user._id,
-    username: user.username
-  }
-
-  jwt.sign(payload, "secret", { expiresIn: "10d" }, function(err, token)
-  {
-    res.json({
-      success: true,
-      token: "Bearer" + token
-    });  
-  });
-})
+router.use('/users', userRouter); 
 
 router.post('/history', async (req, res) => {
   const { updateHistory } = await createInteraction();
@@ -75,25 +57,6 @@ router.post('/history', async (req, res) => {
     }
 
     res.send(true); 
-  });
-})
-
-router.get('/history/:token', async (req, res) => {
-  const token = req.params.token.slice(6);
-
-  jwt.verify(token, 'secret', async function(err, decoded) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-
-    const { getHistory } = await createInteraction();
-
-    console.log(decoded.id);
-
-    const history = await getHistory(decoded.id);
-    console.log(history);
-    history ? res.send(history) : res.send("didnt work");
   });
 })
 
