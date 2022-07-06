@@ -8,7 +8,7 @@ export default function Profile() {
 
   const handleClick = async () => {
     const token = localStorage.getItem('token');
-    const userHistory = await axios.get(`/api/history/${token}`);    
+    const userHistory = await axios.get(`/api/users/history/${token}`);    
     console.log(userHistory.data);
     setHistory(userHistory.data);
   }
