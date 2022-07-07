@@ -1,24 +1,24 @@
 import GetExerciseButton from '../Button/GetExerciseButton';
 import CompleteExerciseButton from '../Button/CompleteExerciseButton';
 import './Home.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function Home () {
   const [randomExercise, setRandomExercise] = useState({});
   const [completed, setCompleted] = useState(false);
-  
-  // On the home page, I need to check if the person had completed an
-  // exercise then went to the login page so that i can render it how
-  // they left
-  /*const location = useLocation();
-  
-  console.log(location);
 
-  if (location.state) {
-    setRandomExercise(location.state)
-  }*/
+  const location = useLocation();
 
+  useEffect(() => {
+
+    if (location.state) {
+      setRandomExercise(location.state);
+      window.history.replaceState(null, '');
+    }
+
+  }, [ location ]);
+  
   return (
     <div>
       <h2>Welcome to MVMT Break!</h2>

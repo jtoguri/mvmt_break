@@ -20,8 +20,7 @@ export default function CompleteExerciseButton ({
   const handleClick = async () => {
 
     if (!user) {
-      navigate("/login", { replace: true, state: {from: location,
-      exercise} });
+      navigate("/login", { replace: true, state: {from: location, exercise} });
       return;
     }
 
