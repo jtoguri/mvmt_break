@@ -17,9 +17,8 @@ function Login() {
   const navigate = useNavigate(); 
   const location = useLocation();
 
-  console.log(location);
-
   const from = location.state?.from?.pathname || "/";
+  const exercise = location.state?.exercise || null;
 
   /*if (user) {
     return (
@@ -36,12 +35,13 @@ function Login() {
       });
       
       localStorage.setItem('token', res.data.token);
-      
+
       setUser(res.data);
 
-      navigate(from, { replace: true, state: location.state.exercise });
+      navigate(from, { replace: true, state: exercise });
       
     } catch (error) {
+      console.log(error);
       return setError(error.response.data);
     }
   }

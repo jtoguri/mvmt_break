@@ -21,7 +21,7 @@ function Home () {
   
   return (
     <div>
-      <h2>Welcome to MVMT Break!</h2>
+      <h2>Welcome to Mvmt Break!</h2>
       <p>Press the Take a Break button below to generate a random
       exercise from our exercise database.</p>
 

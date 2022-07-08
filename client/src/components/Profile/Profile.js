@@ -15,8 +15,8 @@ export default function Profile() {
   useEffect(() => {
     if (!user) return; 
 
-    const username = user.username.charAt(0).toUpperCase() + 
-      user.username.slice(1);
+    setUsername(user.username.charAt(0).toUpperCase() +
+      user.username.slice(1));
 
     const token = localStorage.getItem('token');
     
@@ -34,6 +34,5 @@ export default function Profile() {
       {!user && <h3>Please register/login to view your profile</h3>}
       {user && <h1>{username}'s Profile</h1>}
       {history.length > 0 && <UserHistory history={history} />}
-    </div>
-  );
+    </div>);
 }

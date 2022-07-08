@@ -18,7 +18,11 @@ import {
 
 import jwt_decode from 'jwt-decode';
 
+import LogoutDialog from '../Auth/LogoutDialog';
+
 function App() {
+  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
+
   const storedJwt = localStorage.getItem('token');
   
   const decodedUser = storedJwt ? jwt_decode(storedJwt) : null;
@@ -30,7 +34,10 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={value}>
-        <Header />
+        <Header logoutDialogOpen={logoutDialogOpen}
+          setLogoutDialogOpen={setLogoutDialogOpen} />
+        <LogoutDialog isOpen={logoutDialogOpen}
+          setOpen={setLogoutDialogOpen}/>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
