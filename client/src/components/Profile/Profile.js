@@ -1,22 +1,37 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+
 import axios from 'axios';
 
 import UserHistory from '../UserHistory/UserHistory';
 
+import { UserContext } from '../UserContext';
+
 export default function Profile() {
   const [history, setHistory] = useState([]);
 
-  const handleClick = async () => {
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    if (!user) return; 
+    
     const token = localStorage.getItem('token');
-    const userHistory = await axios.get(`/api/users/history/${token}`);    
-    console.log(userHistory.data);
-    setHistory(userHistory.data);
-  }
+    
+    const fetchData = async (token) => {
+      const userHistory = await axios.get(`/api/users/history/${token}`);
+      setHistory(userHistory.data);
+    } 
+
+    fetchData(token);
+
+  }, [])
+
+  const username = user.username.charAt(0).toUpperCase() +
+    user.username.slice(1);
 
   return (
-    <div >
-      <h1>Profile</h1>      
-      <button onClick={handleClick}>Show History</button>
+    <div>
+      {!user && <h3>Please register/login to view your profile</h3>}
+      <h1>{username}'s Profile</h1>      
       {history.length > 0 && <UserHistory history={history} />}
     </div>
   );
