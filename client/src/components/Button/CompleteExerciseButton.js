@@ -38,7 +38,7 @@ export default function CompleteExerciseButton ({
       exercise: { ...exercise }
     };
 
-    const res = await axios.post('/api/history', history);
+    const res = await axios.post('/api/users/history', history);
 
     if (res.data === true) {
       setCompleted(true);

@@ -3,12 +3,13 @@ const { verifyToken, getHistoryByUserId } = require('../services');
 module.exports = async (req, res) => {
   const token = req.params.token.slice(6);
 
-  const userId = await verifyToken(token);
-  console.log(userId);
+  const decoded = await verifyToken(token);
 
-  if (userId.error) {
-    return res.status(400).send(userId.error);
+  if (decoded.error) {
+    return res.status(400).send(decoded.error);
   }
+
+  const userId = decoded.id;
   
   const history = await getHistoryByUserId(userId);
 

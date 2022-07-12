@@ -7,7 +7,7 @@ function GetExerciseButton({ exercise, setExercise, setCompleted }) {
   const handleClick = () => {
     setCompleted(false);
 
-    axios.get('/api/randomExercise').then(res => {
+    axios.get('/api/exercises/randomExercise').then(res => {
       console.log(res.data)
       return setExercise(res.data);
     });
