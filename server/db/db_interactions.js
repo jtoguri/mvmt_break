@@ -11,8 +11,6 @@ const interactions = () => {
     return db;
   }
 
-  //const exercises = await db.collection('exercises');
-
   return async () => {
     const db = await getdb();
 
