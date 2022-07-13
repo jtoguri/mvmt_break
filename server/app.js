@@ -9,7 +9,7 @@ app.use('/api', apiRouter);
 
 app.get('/', (req, res) => {
   res.redirect('/api');
-}
+})
 
 app.listen(port, () => {
   console.log(`listening on port: ${port}`);
