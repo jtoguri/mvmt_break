@@ -4,6 +4,8 @@ const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
 
 const uri = process.env.MONGODB_URI; 
 
+console.log("uri: ", uri)
+
 const client = new MongoClient(uri);
 
 const dbconnect = () => {
