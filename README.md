@@ -1,14 +1,13 @@
 # Mvmt Break
 
-## Description
-***A full stack web application designed to allow users to easily take
-movement breaks during long periods of sedentary work.***
+A full stack web application allowing users to quickly generate exercises and save completed exercises to their history for tracking.
 
-## Motivation
-While learning to code I realized I was sitting down for extended periods of time. Mvmt_Break helps to break up these sitting periods with a mix of exercises.
+While learning to code I realized I was sitting down for extended
+periods of time. Mvmt_Break helps to break up these sitting periods with a mix of exercises.
 
-## Background Info
-Exercise classification is based on...
+The project includes a MongoDB database, an API built with Node.js and Express, and a client-side application built with ReactJS.
+
+See the [planning](planning) directory for more background information.
 
 ## Instructions
 How to use the app here
