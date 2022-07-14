@@ -28,8 +28,12 @@ function Login() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const apiURL = "https://mvmt-break-api.herokuapp.com";
+    const requestURL = apiURL + "/api/users/login";
+
     try {
-      const res = await axios.post('/api/users/login', {
+      const res = await axios.post(requestURL, {
         username,
         password
       });

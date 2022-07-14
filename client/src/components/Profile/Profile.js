@@ -21,7 +21,10 @@ export default function Profile() {
     const token = localStorage.getItem('token');
     
     const fetchData = async (token) => {
-      const userHistory = await axios.get(`/api/users/history/${token}`);
+      const apiURL = "https://mvmt-break-api.herokuapp.com";
+      const requestURL = apiURL + `/api/users/history/${token}`;
+
+      const userHistory = await axios.get(requestURL);
       setHistory(userHistory.data);
     } 
 

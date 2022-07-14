@@ -1,5 +1,5 @@
-//import { useState } from 'react';
 import axios from 'axios';
+
 import './Button.css';
 
 function GetExerciseButton({ exercise, setExercise, setCompleted }) {
@@ -7,11 +7,11 @@ function GetExerciseButton({ exercise, setExercise, setCompleted }) {
   const handleClick = () => {
     setCompleted(false);
 
-    const apiURL =
-      "https://mvmt-break-api.herokuapp.com/api/exercises/randomExercise";
+    const apiURL = "https://mvmt-break-api.herokuapp.com";
 
-    axios.get(apiURL).then(res => {
-      console.log(res.data)
+    const requestURL = apiURL + "/api/exercises/randomExercise";
+
+    axios.get(requestURL).then(res => {
       return setExercise(res.data);
     });
   };

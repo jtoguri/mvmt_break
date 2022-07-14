@@ -38,7 +38,11 @@ export default function CompleteExerciseButton ({
       exercise: { ...exercise }
     };
 
-    const res = await axios.post('/api/users/history', history);
+    const apiURL = "https://mvmt-break-api.herokuapp.com";
+
+    const requestURL = apiURL + "/api/users/history";
+
+    const res = await axios.post(requestURL, history);
 
     if (res.data === true) {
       setCompleted(true);
